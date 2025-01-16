@@ -1,7 +1,14 @@
-require('dotenv').config();
 const express = require('express');
-import { createAuth0Client } from '@auth0/auth0-spa-js';
- 
-const user = require('../../Model/User/User');
+const app = express();
+const { auth } = require('express-oauth2-jwt-bearer');
 
+const port = process.env.PORT || 8080;
 
+const jwtCheck = auth({
+  audience: 'https://spirit-shop.com',
+  issuerBaseURL: 'https://dev-oxzdh03osd2vleb1.us.auth0.com/',
+  tokenSigningAlg: 'RS256'
+});
+
+// enforce on all endpoints
+app.use(jwtCheck);
