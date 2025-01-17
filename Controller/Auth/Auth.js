@@ -1,8 +1,4 @@
-const express = require('express');
-const app = express();
 const { auth } = require('express-oauth2-jwt-bearer');
-
-const port = process.env.PORT || 8080;
 
 const jwtCheck = auth({
   audience: 'https://spirit-shop.com',
@@ -10,5 +6,4 @@ const jwtCheck = auth({
   tokenSigningAlg: 'RS256'
 });
 
-// enforce on all endpoints
-app.use(jwtCheck);
+module.exports = jwtCheck
