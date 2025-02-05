@@ -18,13 +18,10 @@
   },
   "homepage": "https://github.com/shop-alcool/api#readme",
   "dependencies": {
-<<<<<<< HEAD
     "api": "file:",
-=======
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.3",
     "cors": "^2.8.5",
->>>>>>> 685c8d28a87f255815d23b9cda45d2da91c17db0
     "datasource": "^0.0.1",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
