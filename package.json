@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/shop-alcool/api#readme",
   "dependencies": {
+    "api": "file:",
     "datasource": "^0.0.1",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
