@@ -1,15 +1,15 @@
 const express = require('express');
 const app = express.Router();
-const jwtCheck = require('../Controller/Auth/Auth')
+const jwtCheck = require('../Controller/Auth/Auth');
 const client = require('../Donnée/Connexion_DB');
 
 app.get('/', function (req, res) {
-    res.json({ message: 'Hello, world!' });
+    res.send({ message: 'Hello, world!' });
 });
-app.use(jwtCheck);
-app.get('/authorized', function (req, res) {
-    res.send('Secured Resource');
-});
+// app.use(jwtCheck);
+// app.get('/authorized', function (req, res) {
+//     res.send('Secured Resource');
+// });
 
 app.get('/alcool', function (req, res) {
     client.query('SELECT * FROM alcohol')
