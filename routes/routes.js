@@ -60,7 +60,7 @@ app.post('/alcool', function (req, res) {
 
 app.patch('/alcool/:id', function (req, res) {
     const { type_alcohol_id, name, description, degree, capacity, image, id } = req.body;
-    client.query('UPDATE alcohol SET type_alcohol_id = $1 name = $2, description = $3, degree = $4, capacity = $5, image = $6 WHERE id = $7', [type_alcohol_id, name, description, degree, capacity, image, id])
+    client.query('UPDATE alcohol SET type_alcohol_id = $1, name = $2, description = $3, degree = $4, capacity = $5, image = $6 WHERE id = $7', [type_alcohol_id, name, description, degree, capacity, image, id])
         .then(result => {
             if (result.rows.length === 0) {
                 return res.status(404).send({ message: 'Aucun alcool trouvé' });
