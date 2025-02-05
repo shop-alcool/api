@@ -30,7 +30,7 @@ app.get('/alcool', function (req, res) {
 });
 
 app.get('/alcool/:id', function (req, res) {
-    client.query('SELECT * FROM alcohol WHERE id = $1', (req.params.id))
+    client.query('SELECT * FROM alcohol WHERE id = $1', [req.params.id])
         .then(result => {
             if (result.rows.length === 0) {
                 return res.status(404).send({ message: 'Aucun alcool trouvé' });
