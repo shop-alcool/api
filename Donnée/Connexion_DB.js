@@ -18,8 +18,4 @@ client.connect()
   .catch(err => {
     console.error('Erreur de connexion:', err);
   })
-  .finally(() => {
-    client.end();
-  });
-
 module.exports = client;
