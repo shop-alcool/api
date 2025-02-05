@@ -13,7 +13,7 @@ app.get('/', function (req, res) {
 //     res.send('Secured Resource');
 // });
 
-app.get('/alcool', function (res) {
+app.get('/alcool', function (req, res) {
     client.query('SELECT shop_item.id, alcohol_id, shop_id, price, name, image FROM shop_item INNER JOIN alcohol ON alcohol.id = shop_item.alcohol_id;')
         .then(result => {
             if (result.rows.length === 0) {
@@ -25,7 +25,7 @@ app.get('/alcool', function (res) {
             }
         })
         .catch(err => {
-            console.log(rows);
+            
             console.error('Erreur de la requête SQL:', err);
             res.status(500).send({ message: 'Erreur interne du serveur', error: err });
         });
