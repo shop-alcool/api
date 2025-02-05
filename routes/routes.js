@@ -45,8 +45,8 @@ app.get('/alcool/:id', function (req, res) {
 });
 
 app.post('/alcool', function (req, res) {
-    const { name, price, quantity, description } = req.body;
-    client.query('INSERT INTO alcohol(name, price, quantity, description) VALUES($1, $2, $3, $4) RETURNING *', [name, price, quantity, description])
+    const { type_alcohol_id, name, price, quantity, description } = req.body;
+    client.query('INSERT INTO alcohol(type_alcohol_id, name, price, quantity, description) VALUES($1, $2, $3, $4) RETURNING *', [type_alcohol_id, name, price, quantity, description])
         .then(result => {
             res.status(201).send(result.rows[0]);
         })
@@ -57,8 +57,8 @@ app.post('/alcool', function (req, res) {
 });
 
 app.patch('/alcool/:id', function (req, res) {
-    const { name, price, quantity, description, id } = req.body;
-    client.query('UPDATE alcohol SET name = $1, price = $2, quantity = $3, description = $4 WHERE id = $5 RETURNING *', [name, price, quantity, description, id])
+    const { type_alcohol_id, name, price, quantity, description, id } = req.body;
+    client.query('UPDATE alcohol SET type_alcohol_id = $1 name = $2, price = $3, quantity = $4, description = $5 WHERE id = $6 RETURNING *', [type_alcohol_id, name, price, quantity, description, id])
         .then(result => {
             if (result.rows.length === 0) {
                 return res.status(404).send({ message: 'Aucun alcool trouvé' });
