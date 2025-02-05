@@ -1,3 +1,3 @@
-./node_modules
-./.env
-./postgress_data
+node_modules/
+.env
+postgress_data/
