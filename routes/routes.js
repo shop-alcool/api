@@ -13,8 +13,8 @@ app.get('/', function (req, res) {
 //     res.send('Secured Resource');
 // });
 
-app.get('/alcool', function (req, res) {
-    client.query('SELECT * FROM alcohol')
+app.get('/alcool', function (res) {
+    client.query('SELECT shop_item.id, alcohol_id, shop_id, price, name, image FROM shop_item INNER JOIN alcohol ON alcohol.id = shop_item.alcohol_id;')
         .then(result => {
             if (result.rows.length === 0) {
                 console.log(rows);
@@ -32,7 +32,7 @@ app.get('/alcool', function (req, res) {
 });
 
 app.get('/alcool/:id', function (req, res) {
-    client.query('SELECT * FROM alcohol WHERE id = $1', [req.params.id])
+    client.query('SELECT shop_item.id, alcohol_id, shop_id, price, type_alcohol_id, name, description, degree, capacity, image FROM shop_item INNER JOIN alcohol ON alcohol.id = shop_item.alcohol_id WHERE shop_item.alcohol_id = $1;', [req.params.id])
         .then(result => {
             if (result.rows.length === 0) {
                 return res.status(404).send({ message: 'Aucun alcool trouvé' });
@@ -75,7 +75,7 @@ app.patch('/alcool/:id', function (req, res) {
 });
 
 app.delete('/alcool/:id', function (req, res) {
-    client.query('DELETE FROM alcohol WHERE id = $1', [req.params.id])
+    client.query('DELETE FROM shop_item WHERE id = $1', [req.params.id])
         .then(result => {
             if (result.rowCount === 0) {
                 return res.status(404).send({ message: 'Aucun alcool trouvé' });
