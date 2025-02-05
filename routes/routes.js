@@ -46,7 +46,7 @@ app.get('/alcool/:id', function (req, res) {
 
 app.post('/alcool', function (req, res) {
     const { type_alcohol_id, name, price, quantity, description } = req.body;
-    client.query('INSERT INTO alcohol(type_alcohol_id, name, price, quantity, description) VALUES($1, $2, $3, $4) RETURNING *', [type_alcohol_id, name, price, quantity, description])
+    client.query('INSERT INTO alcohol(type_alcohol_id, name, price, quantity, description) VALUES($1, $2, $3, $4, $5) RETURNING *', [type_alcohol_id, name, price, quantity, description])
         .then(result => {
             res.status(201).send(result.rows[0]);
         })
