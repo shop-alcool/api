@@ -16,10 +16,10 @@ app.get('/alcool', function (req, res) {
         .then(result => {
             if (result.rows.length === 0) {
                 console.log(rows);
-                return res.status(404).json({ message: 'Aucun alcool trouvé' });
+                return res.status(404).send({ message: 'Aucun alcool trouvé' });
             } else {
                 console.log(result.rows);
-                return res.status(200).json(result.rows);
+                return res.status(200).send(result.rows);
             }
         })
         .catch(err => {
