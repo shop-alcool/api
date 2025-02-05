@@ -1,11 +1,8 @@
 const express = require('express');
 const app = express.Router();
-<<<<<<< HEAD
 const jwtCheck = require('../Controller/Auth/Auth');
-=======
 const client = require('../Donnée/Connexion_DB');
 
->>>>>>> bdd
 app.get('/', function (req, res) {
     res.json({ message: 'Hello, world!' });
 });
